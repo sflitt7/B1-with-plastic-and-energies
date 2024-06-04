@@ -1,0 +1,8 @@
+/home/sarah/opt/B1/build/CMakeFiles/exampleB1.dir
+/home/sarah/opt/B1/build/CMakeFiles/B1.dir
+/home/sarah/opt/B1/build/CMakeFiles/edit_cache.dir
+/home/sarah/opt/B1/build/CMakeFiles/rebuild_cache.dir
+/home/sarah/opt/B1/build/CMakeFiles/list_install_components.dir
+/home/sarah/opt/B1/build/CMakeFiles/install.dir
+/home/sarah/opt/B1/build/CMakeFiles/install/local.dir
+/home/sarah/opt/B1/build/CMakeFiles/install/strip.dir
