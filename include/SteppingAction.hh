@@ -37,6 +37,11 @@ class G4LogicalVolume;
 
 namespace B1
 {
+  class DetectorConstruction;
+}
+
+namespace B1a
+{
 
 class EventAction;
 
@@ -45,15 +50,17 @@ class EventAction;
 class SteppingAction : public G4UserSteppingAction
 {
   public:
-    SteppingAction(EventAction* eventAction);
+    SteppingAction(const B1::DetectorConstruction* detConstruction, EventAction* eventAction);
     ~SteppingAction() override = default;
 
     // method from the base class
-    void UserSteppingAction(const G4Step*) override;
+    void UserSteppingAction(const G4Step* step) override;
 
   private:
     EventAction* fEventAction = nullptr;
+    const B1::DetectorConstruction* fDetConstruction = nullptr;
     G4LogicalVolume* fScoringVolume = nullptr;
+    G4LogicalVolume* fScoringVolume2 = nullptr;
 };
 
 }

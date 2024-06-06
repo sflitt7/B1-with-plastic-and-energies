@@ -33,27 +33,31 @@
 #include "G4UserEventAction.hh"
 #include "globals.hh"
 
-namespace B1
+namespace B1a
 {
 
-class RunAction;
+//class RunAction;
 
 /// Event action class
 
 class EventAction : public G4UserEventAction
 {
   public:
-    EventAction(RunAction* runAction);
+    EventAction() = default;
     ~EventAction() override = default;
 
     void BeginOfEventAction(const G4Event* event) override;
     void EndOfEventAction(const G4Event* event) override;
 
-    void AddEdep(G4double edep) { fEdep += edep; }
+    void AddEdep(G4double edep) { fEdep += edep; fEdep2 += edep*edep;}
+    void AddEdepP(G4double edepP) { fEdepP += edepP; fEdepP2 += edepP*edepP;}
 
   private:
-    RunAction* fRunAction = nullptr;
+    //RunAction* fRunAction = nullptr;
     G4double   fEdep = 0.;
+    G4double   fEdep2 = 0.;
+    G4double   fEdepP = 0.;
+    G4double   fEdepP2 = 0.;
 };
 
 }

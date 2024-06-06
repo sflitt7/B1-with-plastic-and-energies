@@ -784,6 +784,7 @@ CMakeFiles/exampleB1.dir/exampleB1.cc.o: /home/sarah/opt/B1/exampleB1.cc \
 
 CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o: /home/sarah/opt/B1/src/ActionInitialization.cc \
   /home/sarah/opt/B1/include/ActionInitialization.hh \
+  /home/sarah/opt/B1/include/DetectorConstruction.hh \
   /home/sarah/opt/B1/include/EventAction.hh \
   /home/sarah/opt/B1/include/PrimaryGeneratorAction.hh \
   /home/sarah/opt/B1/include/RunAction.hh \
@@ -822,6 +823,7 @@ CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o: /home/sarah/opt/B1/src/A
   /opt/g4-new/include/Geant4/G4VAccumulable.icc \
   /opt/g4-new/include/Geant4/G4VPrimaryGenerator.hh \
   /opt/g4-new/include/Geant4/G4VUserActionInitialization.hh \
+  /opt/g4-new/include/Geant4/G4VUserDetectorConstruction.hh \
   /opt/g4-new/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
   /opt/g4-new/include/Geant4/G4ios.hh \
   /opt/g4-new/include/Geant4/globals.hh \
@@ -2924,6 +2926,7 @@ CMakeFiles/exampleB1.dir/src/PrimaryGeneratorAction.cc.o: /home/sarah/opt/B1/src
 
 CMakeFiles/exampleB1.dir/src/RunAction.cc.o: /home/sarah/opt/B1/src/RunAction.cc \
   /home/sarah/opt/B1/include/DetectorConstruction.hh \
+  /home/sarah/opt/B1/include/EventAction.hh \
   /home/sarah/opt/B1/include/PrimaryGeneratorAction.hh \
   /home/sarah/opt/B1/include/RunAction.hh \
   /opt/g4-new/include/Geant4/CLHEP/Geometry/BasicVector3D.h \
@@ -3174,6 +3177,7 @@ CMakeFiles/exampleB1.dir/src/RunAction.cc.o: /home/sarah/opt/B1/src/RunAction.cc
   /opt/g4-new/include/Geant4/G4UItokenNum.hh \
   /opt/g4-new/include/Geant4/G4UnitsTable.hh \
   /opt/g4-new/include/Geant4/G4UnitsTable.icc \
+  /opt/g4-new/include/Geant4/G4UserEventAction.hh \
   /opt/g4-new/include/Geant4/G4UserRunAction.hh \
   /opt/g4-new/include/Geant4/G4UserStackingAction.hh \
   /opt/g4-new/include/Geant4/G4UserSteppingAction.hh \

@@ -52,7 +52,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   // Envelope parameters
   //
-  G4double env_sizeXY = 20*cm, env_sizeZ = 30*cm;
+  G4double env_sizeXY = 80*cm, env_sizeZ = 80*cm;
   G4Material* env_mat = nist->FindOrBuildMaterial("G4_AIR");
 
   // Option to switch on/off checking of volumes overlaps
@@ -67,7 +67,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Material* world_mat = nist->FindOrBuildMaterial("G4_AIR");
 
   auto solidWorld = new G4Box("World",                           // its name
-    0.5 * world_sizeXY, 0.5 * world_sizeXY, 0.5 * world_sizeZ);  // its size
+    0.75 * world_sizeXY, 0.75 * world_sizeXY, 0.75 * world_sizeZ);  // its size
 
   auto logicWorld = new G4LogicalVolume(solidWorld,  // its solid
     world_mat,                                       // its material
@@ -86,7 +86,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   // Envelope
   //
   auto solidEnv = new G4Box("Envelope",                    // its name
-    0.5 * env_sizeXY, 0.5 * env_sizeXY, 0.5 * env_sizeZ);  // its size
+    0.75 * env_sizeXY, 0.75 * env_sizeXY, 0.75 * env_sizeZ);  // its size
 
   auto logicEnv = new G4LogicalVolume(solidEnv,  // its solid
     env_mat,                                     // its material
@@ -164,15 +164,29 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4ThreeVector pos3 = G4ThreeVector(0*cm,0*cm,0*cm);
 
   //box shape
-  G4double pX = 20.*cm;
-  G4double pY = 20.*cm;
-  G4double pZ = 20.*cm;
+  G4double pX = 30.*cm;
+  G4double pY = 30.*cm;
+  G4double pZ = 50.*cm;
   auto aBox = new G4Box("Shape3",pX,pY,pZ);
   auto logicShape3 = new G4LogicalVolume(aBox,shape3_mat,"Shape3");
-  new G4PVPlacement(nullptr, pos3, logicShape3,"Shape3",logicEnv,false,0,checkOverlaps);
+  fAbsorberPV = new G4PVPlacement(nullptr, pos3, logicShape3,"Shape3",logicEnv,false,0,checkOverlaps);
 
   fScoringVolume = logicShape3;
 
+  G4Material* shape4_mat = nist->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+  G4ThreeVector pos4 = G4ThreeVector(0*cm,0*cm,-55*cm);
+
+  //box shape
+  G4double pX2 = 30.*cm;
+  G4double pY2 = 30.*cm;
+  G4double pZ2 = 1.*cm;
+  auto aBox2 = new G4Box("Shape4",pX2,pY2,pZ2);
+  auto logicShape4 = new G4LogicalVolume(aBox2,shape4_mat,"Shape4");
+  fGapPV = new G4PVPlacement(nullptr, pos4, logicShape4,"Shape4",logicEnv,false,0,checkOverlaps);
+
+  fScoringVolume2 = logicShape4;
+
+ 
   //
   //always return the physical World
   //

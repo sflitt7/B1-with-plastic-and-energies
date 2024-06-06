@@ -35,20 +35,21 @@
 #include "G4AnalysisManager.hh"
 #include "G4UnitsTable.hh"
 
-namespace B1
+namespace B1a
 {
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-EventAction::EventAction(RunAction* runAction)
-: fRunAction(runAction)
-{}
+//EventAction::EventAction(RunAction* runAction)
+//: fRunAction(runAction)
+//{}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void EventAction::BeginOfEventAction(const G4Event*)
 {
   fEdep = 0.;
+  fEdepP = 0.;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -57,9 +58,14 @@ void EventAction::EndOfEventAction(const G4Event*)
 {
   auto analysisManager = G4AnalysisManager::Instance();
   // accumulate statistics in run action
-  fRunAction->AddEdep(fEdep);
+  //fRunAction->AddEdep(fEdep);
   analysisManager->FillH1(0,fEdep);
   analysisManager->FillNtupleDColumn(0,fEdep);
+  //fRunAction->AddEdep(fEdepP);
+  analysisManager->FillH1(1,fEdepP);
+  analysisManager->FillNtupleDColumn(1,fEdepP);
+  analysisManager->FillH2(0,fEdep,fEdepP);
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

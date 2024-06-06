@@ -36,9 +36,11 @@
 
 class G4Run;
 
-namespace B1
-{
-
+//namespace B1a
+//{
+//class RunAction : public G4UserRunAction
+//}
+namespace B1{
 /// Run action class
 ///
 /// In EndOfRunAction(), it calculates the dose in the selected volume
@@ -59,6 +61,8 @@ class RunAction : public G4UserRunAction
   private:
     G4Accumulable<G4double> fEdep = 0.;
     G4Accumulable<G4double> fEdep2 = 0.;
+    G4Accumulable<G4double> fEdepP = 0.;
+    G4Accumulable<G4double> fEdepP2 = 0.;
 };
 
 }

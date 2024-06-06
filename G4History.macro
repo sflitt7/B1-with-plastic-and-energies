@@ -69,10 +69,8 @@
 /run/verbose 2
 /event/verbose 0
 /tracking/verbose 1
-/gun/particle gamma
-/gun/energy 6 MeV
-/run/beamOn 5
-/gun/particle proton
-/gun/energy 210 MeV
-/tracking/verbose 2
-/run/beamOn 1
+/gun/particle pi0
+/gun/energy 300 MeV
+/run/beamOn 200
+/analysis/h1/getVector
+/analysis/h2/getVector

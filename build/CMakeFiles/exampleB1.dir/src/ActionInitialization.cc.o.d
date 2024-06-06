@@ -247,4 +247,6 @@ CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o: \
  /home/sarah/opt/B1/include/EventAction.hh \
  /opt/g4-new/include/Geant4/G4UserEventAction.hh \
  /home/sarah/opt/B1/include/SteppingAction.hh \
- /opt/g4-new/include/Geant4/G4UserSteppingAction.hh
+ /opt/g4-new/include/Geant4/G4UserSteppingAction.hh \
+ /home/sarah/opt/B1/include/DetectorConstruction.hh \
+ /opt/g4-new/include/Geant4/G4VUserDetectorConstruction.hh

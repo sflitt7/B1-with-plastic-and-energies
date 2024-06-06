@@ -36,13 +36,15 @@
 #include "G4RunManager.hh"
 #include "G4LogicalVolume.hh"
 
-namespace B1
+using namespace B1;
+
+namespace B1a
 {
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-SteppingAction::SteppingAction(EventAction* eventAction)
-: fEventAction(eventAction)
+SteppingAction::SteppingAction(const DetectorConstruction* detConstruction, EventAction* eventAction)
+ : fDetConstruction(detConstruction), fEventAction(eventAction)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -53,21 +55,45 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     const auto detConstruction = static_cast<const DetectorConstruction*>(
       G4RunManager::GetRunManager()->GetUserDetectorConstruction());
     fScoringVolume = detConstruction->GetScoringVolume();
+    fScoringVolume2 = detConstruction->GetScoringVolume2();
   }
 
   // get volume of the current step
-  G4LogicalVolume* volume
-    = step->GetPreStepPoint()->GetTouchableHandle()
-      ->GetVolume()->GetLogicalVolume();
+  auto volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
+  //G4LogicalVolume* volume
+ //   = step->GetPreStepPoint()->GetTouchableHandle()
+   //   ->GetVolume()->GetLogicalVolume();
+
 
   // check if we are in scoring volume
-  if (volume != fScoringVolume) return;
+ // if (volume != fScoringVolume) return;
+  auto edep = step->GetTotalEnergyDeposit();
+  auto edepP = step->GetTotalEnergyDeposit();
+  G4double stepLength = 0.;
+  stepLength = step->GetStepLength();
+
+  if ( volume == fDetConstruction->GetAbsorberPV() ) {
+	  fEventAction->AddEdep(edep);
+  }
+
+  if ( volume == fDetConstruction->GetGapPV() ) {
+	  fEventAction->AddEdepP(edepP);
+  }
+
 
   // collect energy deposited in this step
-  G4double edepStep = step->GetTotalEnergyDeposit();
-  fEventAction->AddEdep(edepStep);
+ // G4double edepStep = step->GetTotalEnergyDeposit();
+ // fEventAction->AddEdep(edepStep);
+
+ // G4double edepPStep = step->GetTotalEnergyDeposit();
+ // fEventAction->AddEdepP(edepPStep);
 }
+
+
+}
+
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-}
+

@@ -93,7 +93,8 @@ int main(int argc,char** argv)
   // Set mandatory initialization classes
   //
   // Detector construction
-  runManager->SetUserInitialization(new DetectorConstruction());
+  auto detConstruction = new B1::DetectorConstruction();
+  runManager->SetUserInitialization(detConstruction);
 
   // Physics list
   auto physicsList = new QBBC;
@@ -101,7 +102,8 @@ int main(int argc,char** argv)
   runManager->SetUserInitialization(physicsList);
 
   // User action initialization
-  runManager->SetUserInitialization(new ActionInitialization());
+  auto actionInitialization = new B1a::ActionInitialization(detConstruction);
+  runManager->SetUserInitialization(actionInitialization);
 
   // Initialize visualization with the default graphics system
   auto visManager = new G4VisExecutive(argc, argv);

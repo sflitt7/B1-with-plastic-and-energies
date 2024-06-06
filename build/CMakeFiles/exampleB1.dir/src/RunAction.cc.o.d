@@ -241,6 +241,8 @@ CMakeFiles/exampleB1.dir/src/RunAction.cc.o: \
  /opt/g4-new/include/Geant4/G4ParticleMomentum.hh \
  /home/sarah/opt/B1/include/DetectorConstruction.hh \
  /opt/g4-new/include/Geant4/G4VUserDetectorConstruction.hh \
+ /home/sarah/opt/B1/include/EventAction.hh \
+ /opt/g4-new/include/Geant4/G4UserEventAction.hh \
  /opt/g4-new/include/Geant4/G4RunManager.hh \
  /opt/g4-new/include/Geant4/G4Event.hh /usr/include/c++/13/set \
  /usr/include/c++/13/bits/stl_set.h \

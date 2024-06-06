@@ -32,7 +32,11 @@
 
 #include "G4VUserActionInitialization.hh"
 
-namespace B1
+namespace B1{
+	class DetectorConstruction;
+}
+
+namespace B1a
 {
 
 /// Action initialization class.
@@ -40,11 +44,14 @@ namespace B1
 class ActionInitialization : public G4VUserActionInitialization
 {
   public:
-    ActionInitialization() = default;
+    ActionInitialization(B1::DetectorConstruction*) ;
     ~ActionInitialization() override = default;
 
     void BuildForMaster() const override;
     void Build() const override;
+
+  private:
+    B1::DetectorConstruction* fDetConstruction = nullptr;
 };
 
 }

@@ -51,9 +51,28 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
 
+    G4LogicalVolume* GetScoringVolume2() const { return fScoringVolume2; }
+
+    const G4VPhysicalVolume* GetAbsorberPV() const;
+    const G4VPhysicalVolume* GetGapPV() const;
+
   protected:
     G4LogicalVolume* fScoringVolume = nullptr;
+    G4LogicalVolume* fScoringVolume2 = nullptr;
+
+  private:
+  G4VPhysicalVolume* fAbsorberPV = nullptr;
+  G4VPhysicalVolume* fGapPV = nullptr;
+
 };
+
+ inline const G4VPhysicalVolume* DetectorConstruction::GetAbsorberPV() const {
+	 return fAbsorberPV;
+ }
+
+ inline const G4VPhysicalVolume* DetectorConstruction::GetGapPV() const {
+	 return fGapPV;
+ }
 
 }
 
